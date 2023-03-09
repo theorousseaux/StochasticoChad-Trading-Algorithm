@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Mes fichiers de trade</title>
+    <meta http-equiv="refresh" content="14400">
+    <style>
+          .container {
+            display: flex; /* utilisez un conteneur flex pour placer les images côte à côte */
+            flex-wrap: wrap; /* permet aux images de passer à la ligne si nécessaire */
+          }
+
+          .image {
+            width: 50%; /* donnez à chaque image une largeur de 50% */
+            float: left; /* utilisez float pour placer les images côte à côte */
+            box-sizing: border-box; /* inclure les bordures et les marges dans la largeur de l'image */
+          }
+    </style>
+</head>
+
+<body>
+    <h1>Mes fichiers de trade</h1>
+    <p>{{symbol}}</p>
+    <div class="container">
+        <img src={{path1}} alt="Mon image" class="image">
+        <img src={{path2}} alt="Mon image" class="image">
+    </div>
+<iframe src={{path3}} width="100%"></iframe>
+</body>
+</html>
+
+
+
+

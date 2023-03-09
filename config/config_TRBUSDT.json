@@ -1,0 +1,13 @@
+{
+    "interval": "4h",
+    "symbol": "TRBUSDT",
+    "date_start": "2022-06-01",
+    "nb_periods_RSI": 14,
+    "stochasticLength": 14,
+    "smooth_K": 2,
+    "smooth_D": 2,
+    "nb_usdt": 71,
+    "stop_loss": 10,
+    "leverage": 2,
+    "periods_MA": 400
+}

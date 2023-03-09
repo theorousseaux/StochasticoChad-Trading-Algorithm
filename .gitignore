@@ -1,0 +1,8 @@
+nohup.out
+__pycache__/
+.DS_Store
+src/nohup.out
+src/__pycache__/
+.idea/
+.env
+static/trade/
