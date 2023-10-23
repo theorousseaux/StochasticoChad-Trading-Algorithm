@@ -11,8 +11,8 @@ This is a simple trading bot for cryptocurrency on Binance. It is written in Pyt
 First you need to write your API key and secret in the '.env' file. You can find them in your Binance account.
 They should be declared like this:
 
-    SYMBOL_api_key=your_api_key
-    SYMBOL_api_key=your_api_secret
+    SYMBOL_API_KEY=your_api_key
+    SYMBOL_API_SECRET=your_api_secret
 
 where SYMBOL is the symbol of the cryptocurrency you want to trade, for example you want to trade Bitcoin against USDT, symbol is BTCUSDT.
 

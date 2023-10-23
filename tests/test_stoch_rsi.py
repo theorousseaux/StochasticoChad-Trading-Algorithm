@@ -1,4 +1,7 @@
 import os
+import sys
+
+sys.path.append(os.getcwd())
 
 from src.position.strategy.stoch_rsi_strategy import StochRSIStrategy
 from dotenv import load_dotenv
@@ -9,10 +12,10 @@ load_dotenv()
 interval = "4h"
 
 symbol = "TRBUSDT"
-date_start = "2022-11-01"
+date_start = "2023-09-01"
 
-api_key = os.getenv(symbol + "_API_KEY")
-api_secret = os.getenv(symbol + "_API_SECRET")
+api_key = os.getenv("TEST_API_KEY")
+api_secret = os.getenv("TEST_API_SECRET")
 
 nb_periods_RSI = 11
 stochastic_length = 11
@@ -42,4 +45,3 @@ print(buy_profit)
 print(sell_profit)
 print(buy_profit + sell_profit)
 
-position.api.buy_margin_market_asset_leverage(symbol=symbol, quantity=1.43, leverage=2)

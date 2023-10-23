@@ -40,8 +40,8 @@ class StochRSIStrategy(Position):
         if self._update_short:
             self.buy_sell_df = self.calculate.calculate_MA(historical=self.buy_sell_df,
                                                            nb_periods=self.periods_MA)
-            self.short = self.buy_sell_df['close'][-1] < \
-                         self.buy_sell_df['MA_{}'.format(self.periods_MA)][-1]
+            self.short = self.buy_sell_df.iloc[-1]['close'] < \
+                         self.buy_sell_df.iloc[-1]['MA_{}'.format(self.periods_MA)]
 
     def update_buy_sell_stochastic_rsi_df(self):
         self.update_last_interval()
@@ -57,8 +57,8 @@ class StochRSIStrategy(Position):
         if self._update_short:
             self.buy_sell_df = self.calculate.calculate_MA(historical=self.buy_sell_df,
                                                            nb_periods=self.periods_MA)
-            self.short = self.buy_sell_df['close'][-1] < \
-                         self.buy_sell_df['MA_{}'.format(self.periods_MA)][-1]
+            self.short = self.buy_sell_df.iloc[-1]['close'] < \
+                         self.buy_sell_df.iloc[-1]['MA_{}'.format(self.periods_MA)]
 
     def save_graph(self):
         CreateGraphStochRSI.plot_rsi(self.buy_sell_df.tail(100), self.interval, self.symbol,

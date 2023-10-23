@@ -44,11 +44,11 @@ class Calculate:
 
             # if we are in trade we calculate the current efficiency
             if flag == 1:
-                efficiency = 100 * (historical['close'][i] - price_bought) / price_bought
+                efficiency = 100 * (historical.iloc[i]['close'] - price_bought) / price_bought
                 efficiency_list.append(efficiency)
                 efficiency_short_list.append(np.NaN)
             elif flag == -1:
-                efficiency_short = -(100 * (historical['close'][i] - price_sell) / price_sell)
+                efficiency_short = -(100 * (historical.iloc[i]['close'] - price_sell) / price_sell)
                 efficiency_short_list.append(efficiency_short)
                 efficiency_list.append(np.NaN)
             else:
@@ -57,10 +57,10 @@ class Calculate:
 
             # then we check the stop loss condition and close the trade in this case
             if flag == -1:
-                SLS = ((historical['high'][i] - price_sell) / price_sell) * 100 > stop_loss
+                SLS = ((historical.iloc[i]['high'] - price_sell) / price_sell) * 100 > stop_loss
                 SL = False
             elif flag == 1:
-                SL = ((historical['low'][i] - price_bought) / price_bought) * 100 < - stop_loss
+                SL = ((historical.iloc[i]['low'] - price_bought) / price_bought) * 100 < - stop_loss
                 SLS = False
             else:
                 SL = False
@@ -68,12 +68,12 @@ class Calculate:
 
             if (flag == 1) & ((stop_loss != 0) & SL):
                 buy.append(np.NaN)
-                sell.append(historical['close'][i])
+                sell.append(historical.iloc[i]['close'])
                 flag = 0
                 efficiency_trade = efficiency
 
             elif (flag == -1) & ((stop_loss != 0) & SLS):
-                buy.append(historical['close'][i])
+                buy.append(historical.iloc[i]['close'])
                 sell.append(np.NaN)
                 flag = 0
                 efficiency_trade_short = efficiency_short
@@ -83,11 +83,11 @@ class Calculate:
 
                 # if are not in trade we buy
                 if (flag == 0) | (flag == -1):
-                    buy.append(historical['close'][i])
+                    buy.append(historical.iloc[i]['close'])
                     if flag == -1:
                         efficiency_trade_short = efficiency_short
                     flag = 1
-                    price_bought = historical['close'][i]
+                    price_bought = historical.iloc[i]['close']
                 else:
                     buy.append(np.NaN)
 
@@ -97,11 +97,11 @@ class Calculate:
 
                 # if we are in trade, we sell
                 if (flag == 1) | (flag == 0):
-                    sell.append(historical['close'][i])
+                    sell.append(historical.iloc[i]['close'])
                     if flag == 1:
                         efficiency_trade = efficiency
                     flag = -1
-                    price_sell = historical['close'][i]
+                    price_sell = historical.iloc[i]['close']
                 else:
                     sell.append(np.NaN)
 

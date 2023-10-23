@@ -66,14 +66,14 @@ class CalculateStochRSI(Calculate):
     def buy_condition(self, buy_sell_df, i):
         if i == 0:
             return False
-        return (buy_sell_df['%K'][i] > buy_sell_df['%D'][i]) & (
-                (buy_sell_df['%K'][i] < 20) | (buy_sell_df['%K'][i - 1] < 20))
+        return (buy_sell_df.iloc[i]['%K'] > buy_sell_df.iloc[i]['%D']) & (
+                (buy_sell_df.iloc[i]['%K'] < 20) | (buy_sell_df.iloc[i]['%K'] < 20))
 
     def sell_condition(self, buy_sell_df, i):
         if i == 0:
             return False
-        return (buy_sell_df['%K'][i] < buy_sell_df['%D'][i]) & (
-                (buy_sell_df['%K'][i] > 80) | (buy_sell_df['%K'][i - 1] > 80))
+        return (buy_sell_df.iloc[i]['%K'] < buy_sell_df.iloc[i]['%D']) & (
+                (buy_sell_df.iloc[i]['%K'] > 80) | (buy_sell_df.iloc[i]['%K'] > 80))
 
     def calculate_buy_sell_table(self, historical, stop_loss, nb_periods_RSI=None, stochasticLength=None, smooth_K=None,
                                  smooth_D=None):
